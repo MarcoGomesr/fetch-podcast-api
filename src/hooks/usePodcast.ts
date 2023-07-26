@@ -6,7 +6,7 @@ import { setLocalStorageWithExpiry, getLocalStorageWithExpiry } from '@/utils/lo
 
 export default function usePodcast () {
   const [loading, setLoading] = useState<boolean>(true)
-  const [podcastEntry, setPodcastEntry] = useState<Entry[]| null>(null)
+  const [podcastEntries, setPodcastEntries] = useState<Entry[]| null>(null)
 
   useEffect(() => {
     const cookieValue = getLocalStorageWithExpiry('myPodcasts')
@@ -14,7 +14,7 @@ export default function usePodcast () {
 
     if (cookieValue !== null) {
       // console.log(JSON.parse(cookieValue))
-      setPodcastEntry(JSON.parse(cookieParser.value))
+      setPodcastEntries(JSON.parse(cookieParser.value))
       return
     }
 
@@ -22,7 +22,7 @@ export default function usePodcast () {
       try {
         const data: Podcast = await getPodcastList()
         setLoading(true)
-        setPodcastEntry(data.feed.entry)
+        setPodcastEntries(data.feed.entry)
 
         const dataParser = JSON.stringify(data.feed.entry)
         setLocalStorageWithExpiry('myPodcasts', dataParser, 1)
@@ -37,6 +37,7 @@ export default function usePodcast () {
 
   return {
     loading,
-    data: podcastEntry
+    data: podcastEntries,
+    setData: setPodcastEntries
   }
 }
