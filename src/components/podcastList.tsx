@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Entry } from '../types.d'
+import { Entry } from '../types'
 
 interface Props {
   items: Entry
