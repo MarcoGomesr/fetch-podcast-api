@@ -1,18 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
-import { Entry } from '../types'
+import { PodcastProps } from '../types'
+import Link from 'next/link'
 
 interface Props {
-  items: Entry
+  items: PodcastProps
 }
 
-function podcastList ({ items }:Props) {
+function podcastList ({ items }: Props) {
   return (
-    <>
-      <Image width={Number(items['im:image'][2].attributes.height)} height={Number(items['im:image'][2].attributes.height)} src={items['im:image'][2].label} alt='Podcast Cover' />
-      <h2>{items['im:name'].label}</h2>
-      <p>Author: <span>{items['im:artist'].label}</span></p>
-    </>
+    <Link href='/podcast/'>
+      <Image width={150} height={150} src={items.image} alt='Podcast Cover' />
+      <h2>{items.title}</h2>
+      <p>Author: <span>{items.author}</span></p>
+    </Link>
   )
 }
 

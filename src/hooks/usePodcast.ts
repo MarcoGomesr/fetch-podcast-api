@@ -1,12 +1,12 @@
 import getPodcastList from '@/services/getPodcastList'
-import { Entry, Podcast } from '@/types'
+import { PodcastProps } from '@/types'
 import { useEffect, useState } from 'react'
 
 import { setLocalStorageWithExpiry, getLocalStorageWithExpiry } from '@/utils/localStorage'
 
 export default function usePodcast () {
   const [loading, setLoading] = useState<boolean>(true)
-  const [podcastEntries, setPodcastEntries] = useState<Entry[]| null>(null)
+  const [podcastEntries, setPodcastEntries] = useState<PodcastProps[]| null>(null)
 
   useEffect(() => {
     const cookieValue = getLocalStorageWithExpiry('myPodcasts')
@@ -20,11 +20,11 @@ export default function usePodcast () {
 
     async function fetchData () {
       try {
-        const data: Podcast = await getPodcastList()
+        const data: PodcastProps[] = await getPodcastList()
         setLoading(true)
-        setPodcastEntries(data.feed.entry)
+        setPodcastEntries(data)
 
-        const dataParser = JSON.stringify(data.feed.entry)
+        const dataParser = JSON.stringify(data)
         setLocalStorageWithExpiry('myPodcasts', dataParser, 1)
       } catch (error) {
         console.log(error)

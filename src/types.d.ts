@@ -136,3 +136,10 @@ export enum Rel {
 export enum Type {
   TextHTML = 'text/html',
 }
+
+export interface PodcastProps {
+  id: string;
+  title: string;
+  author: string;
+  image: string;
+}

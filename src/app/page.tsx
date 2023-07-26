@@ -12,8 +12,8 @@ export default function HomePage () {
   const filterPodcastSearch = useMemo(() => {
     return typeof filterPodcast === 'string' && filterPodcast.length > 0
       ? data?.filter(item => {
-        return item.title.label.toLowerCase().includes(filterPodcast.toLowerCase()) ||
-                item['im:artist'].label.toLowerCase().includes(filterPodcast.toLowerCase())
+        return item.title.toLowerCase().includes(filterPodcast.toLowerCase()) ||
+                item.author.toLowerCase().includes(filterPodcast.toLowerCase())
       })
       : data
   }, [data, filterPodcast])
@@ -31,7 +31,7 @@ export default function HomePage () {
       </div>
       <section className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
         {loading && filterPodcastSearch?.map(content => (
-          <div key={content.id.attributes['im:id']} className='border-solid border-1 p20 shadow-lg shadow-gray'>
+          <div key={content.id} className='border-solid border-1 p20 shadow-lg shadow-gray'>
             <PodcastList items={content} />
           </div>
         ))}
