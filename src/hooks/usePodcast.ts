@@ -37,7 +37,6 @@ export default function usePodcast () {
 
   return {
     loading,
-    data: podcastEntries,
-    setData: setPodcastEntries
+    podcastEntries
   }
 }

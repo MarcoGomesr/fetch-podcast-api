@@ -6,28 +6,27 @@ import { ChangeEvent, useMemo, useState } from 'react'
 // import FilterPodcast from '@/components/FilterPodcast'
 
 export default function HomePage () {
-  const { data, loading } = usePodcast()
+  const { podcastEntries, loading } = usePodcast()
   const [filterPodcast, setfilterPodcast] = useState<string | null>(null)
 
   const filterPodcastSearch = useMemo(() => {
     return typeof filterPodcast === 'string' && filterPodcast.length > 0
-      ? data?.filter(item => {
+      ? podcastEntries?.filter(item => {
         return item.title.toLowerCase().includes(filterPodcast.toLowerCase()) ||
                 item.author.toLowerCase().includes(filterPodcast.toLowerCase())
       })
-      : data
-  }, [data, filterPodcast])
+      : podcastEntries
+  }, [podcastEntries, filterPodcast])
 
   const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
     setfilterPodcast(e.target.value)
   }
 
   return (
-    <main className='container mx-auto py-8'>
-      <h1>Podcaster</h1>
+    <main>
       {/* <FilterPodcast /> */}
       <div>
-        <input type='text' className='mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 focus:outline-none focus:border-sky-500 rounded-md sm:text-sm focus:ring-1' onChange={handleOnchange} />
+        <span>{filterPodcastSearch?.length}</span><input type='text' className='mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 focus:outline-none focus:border-sky-500 rounded-md sm:text-sm focus:ring-1' onChange={handleOnchange} placeholder='Filter podcast...' />
       </div>
       <section className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
         {loading && filterPodcastSearch?.map(content => (
