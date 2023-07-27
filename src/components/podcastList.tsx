@@ -9,7 +9,7 @@ interface Props {
 
 function podcastList ({ items }: Props) {
   return (
-    <Link href='/podcast/'>
+    <Link href={`/podcast/${items.id}`}>
       <Image width={150} height={150} src={items.image} alt='Podcast Cover' />
       <h2>{items.title}</h2>
       <p>Author: <span>{items.author}</span></p>
