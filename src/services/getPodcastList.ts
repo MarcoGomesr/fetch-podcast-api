@@ -12,7 +12,8 @@ export default async function getPodcastList () {
       id: item.id.attributes['im:id'],
       title: item['im:name'].label,
       author: item['im:artist'].label,
-      image: item['im:image'][2].label
+      image: item['im:image'][2].label,
+      description: item.summary.label
     }
   })
 
