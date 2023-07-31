@@ -23,6 +23,7 @@
       "@/*": ["./src/*"]
     }
   },
+  "types": ["vitest/globals"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/podcast/[podcastId]/episode/[epidoseId]"],
   "exclude": ["node_modules"]
 }
