@@ -1,4 +1,5 @@
 export function getDurationFormat (duration: string) {
+  if (duration === undefined) return 'No avaiable'
   let seconds = Math.floor(Number(duration) / 1000)
   const minutes = Math.floor(seconds / 60)
   seconds = seconds % 60
