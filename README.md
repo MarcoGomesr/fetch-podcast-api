@@ -1,3 +1,6 @@
+<details>
+<summary>How to install the application</summary>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -32,3 +35,43 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+</details>
+
+<details>
+<summary>## Task</summary>
+
+
+
+
+### Podcast Homapage
+[x] Mostrar el listado de los 100 podcasts más populares según el listado de Apple
+[x] Una vez obtenido el listado desde el servicio externo por primera vez se deberá almacenar en cliente de manera que solo se vuelva a solicitar si ha pasado más de un día desde la última vez que se solicitó.
+[x] El usuario podrá filtrar los podcasts mostrados introduciendo una cadena de texto que tendrá en cuenta tanto el título de los podcasts así como los nombres de sus autores.
+[x] El filtrado deberá ser inmediato de manera que reaccione a medida que el usuario vaya introduciendo su texto de filtrado.
+[x] Al pulsar sobre un podcast el usuario deberá navegar a la vista con el detalle del mismo.
+
+### Podcast details page
+[x] Se debe mostrar una barra lateral con la imagen del podcast, su título, su autor y su descripción.
+[x] Se debe mostrar una sección principal donde se visualizará el número de episodios
+
+[x] que actualmente tiene el podcast así como un listado de los mismos indicando su título, fecha de publicación y duración.
+
+[x] Una vez obtenido el detalle de un podcast desde el servicio externo por primera vez, se deberá almacenar en cliente de manera que solo se vuelva a solicitar si ha pasado un día desde la última vez que se solicitó.
+
+[x] Al pulsar sobre el título de un episodio se deberá navegar a la vista con el detalle del mismo.
+
+### Podcast detail episode
+[x]Se debe mostrar la misma barra lateral que en la vista anterior. Tanto la imagen como el título del podcast y el autor deben ser enlaces a la vista con el detalle del podcast (se permite que estos componentes también tengan los mismos enlaces en la vista anterior).
+
+[x] Se debe mostrar una sección principal donde se visualizará el título del podcast, su descripción y un reproductor de audio básico (nativo HTML5) para reproducir el podcast.
+
+[x] Se deberá tener en cuenta que algunas descripciones de episodios contienen HTML y este se debe mostrar interpretado (no escapado).
+
+
+[x] El título de la aplicación deberá actuar como enlace a la vista principal de la
+aplicación.
+
+[x] Cada vez que se inicie una navegación en cliente se debe mostrar algún tipo de indicador visual en la esquina superior derecha de la página para reflejar que el proceso está en marcha. Dicho indicador deberá desaparecer tras finalizar la transición a la nueva vista.
+
+</details>
