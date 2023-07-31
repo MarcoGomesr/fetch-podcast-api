@@ -1,8 +1,16 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
 
 export default function Header () {
   return (
-    <h1><Link href='/'>Podcaster</Link></h1>
+
+    <header className='border-b border-gray-300 pb-3 mb-5 flex justify-between relative'>
+      <h1>
+        <Link href='/' className='text-blue-500 font-bold'>
+          Podcaster
+        </Link>
+      </h1>
+
+    </header>
   )
 }
