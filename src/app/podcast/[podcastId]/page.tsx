@@ -1,11 +1,11 @@
 'use client'
 
 import usePodcastDetail from '@/hooks/usePodcastDetail'
-import { PodcastDetailPros } from '@/types'
 
 import { getDateFormatter } from '@/utils/dateFormat'
 import { getDurationFormat } from '@/utils/durationFormat'
 import Link from 'next/link'
+import useLoadingBounce from '@/hooks/useLoadingBounce'
 
 type Params = {
   params: {
@@ -14,6 +14,7 @@ type Params = {
 }
 
 export default function PodcastDescriptionPage ({ params: { podcastId } }: Params) {
+  const { loading } = useLoadingBounce()
   const { podcastDetail } = usePodcastDetail(podcastId)
 
   const featurePodcastSummary = podcastDetail && podcastDetail?.filter(detail => detail.type === 'track')
@@ -26,6 +27,7 @@ export default function PodcastDescriptionPage ({ params: { podcastId } }: Param
   const customLink = (podcastId: string, detailId: string) => {
     return (isValidURL(detailId)) ? detailId : `/podcast/${podcastId}/episode/${detailId}`
   }
+  if (loading) return null
   return (
 
     <div className='basis-[70%]'>

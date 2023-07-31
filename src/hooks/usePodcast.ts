@@ -3,9 +3,11 @@ import { PodcastProps } from '@/types'
 import { useEffect, useState } from 'react'
 
 import { setLocalStorageWithExpiry, getLocalStorageWithExpiry } from '@/utils/localStorage'
+import useLoadingBounce from './useLoadingBounce'
 
 export default function usePodcast () {
   const [podcastEntries, setPodcastEntries] = useState<PodcastProps[]| null>(null)
+  const { setLoading } = useLoadingBounce()
 
   useEffect(() => {
     const cookieValue = getLocalStorageWithExpiry('myPodcasts')
@@ -14,6 +16,7 @@ export default function usePodcast () {
     if (cookieValue !== null) {
       // console.log(JSON.parse(cookieValue))
       setPodcastEntries(JSON.parse(cookieParser.value))
+      setLoading(false)
       return
     }
 
@@ -26,10 +29,12 @@ export default function usePodcast () {
         setLocalStorageWithExpiry('myPodcasts', dataParser, 1)
       } catch (error) {
         console.log(error)
+      } finally {
+        setLoading(false)
       }
     }
     fetchData()
-  }, [])
+  }, [setLoading])
 
   return {
     podcastEntries
