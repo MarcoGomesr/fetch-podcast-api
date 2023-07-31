@@ -23,14 +23,12 @@ export default async function episodeIdPage ({ params: { podcastId, episodeId } 
   const { title, description, mediaType, episodeUrl } = episodesValues
 
   const hasHTML = /\n/i.test(description)
-  // const newdesc = description.replace("'\n'", '<br />')
-  // console.log(newdesc)
+  const newDescription = description.replaceAll('\n', '<br />')
 
   const descriptionContent = hasHTML
-    ? <div className='italic text-sm text-gray-600' dangerouslySetInnerHTML={{ __html: description }} />
+    ? <div className='italic text-sm text-gray-600' dangerouslySetInnerHTML={{ __html: newDescription }} />
     : <p className='italic text-sm text-gray-600'>{description}</p>
 
-  console.log(descriptionContent)
   return (
     <div className='basis-[70%]'>
       <article className='border p-5'>
