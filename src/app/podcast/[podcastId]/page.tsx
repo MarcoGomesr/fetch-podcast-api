@@ -18,6 +18,14 @@ export default function PodcastDescriptionPage ({ params: { podcastId } }: Param
 
   const featurePodcastSummary = podcastDetail && podcastDetail?.filter(detail => detail.type === 'track')
 
+  const isValidURL = (text:string) => {
+    const urlPattern = /http:|https:/i
+    return urlPattern.test(text)
+  }
+
+  const customLink = (podcastId: string, detailId: string) => {
+    return (isValidURL(detailId)) ? detailId : `/podcast/${podcastId}/episode/${detailId}`
+  }
   return (
 
     <div className='basis-[70%]'>
@@ -45,7 +53,7 @@ export default function PodcastDescriptionPage ({ params: { podcastId } }: Param
               (
                 <tr key={index} className='bg-white border-b hover:bg-gray-100 odd:bg-slate-50 even:bg-white'>
                   <th scope='row' className='px-3 py-4 font-medium text-gray-900 whitespace-nowrap '>
-                    <Link href={`/podcast/${podcastId}/episode/${detail.id}`} className='text-blue-500'>{detail.title}</Link>
+                    <Link href={customLink(podcastId, detail.id)} className='text-blue-500'>{detail.title}</Link>
                   </th>
                   <td className='px-6 py-4'>
                     {getDateFormatter(detail.release)}
