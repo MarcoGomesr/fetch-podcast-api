@@ -237,8 +237,8 @@ export enum WrapperType {
   Track = 'track',
  }
 
-export interface PodcastDetailPros{
-  type: string,
+export interface PodcastDetailPros {
+  type: WrapperType,
   author: string,
   description: string,
   episodes: number,
@@ -247,4 +247,11 @@ export interface PodcastDetailPros{
   release: string,
   title: string,
   duration: number
+  mediaType: string,
+  episodeUrl: string
  }
+
+export interface LoadingContextProps {
+  loading: boolean;
+  setLoadingState: (isLoading: boolean) => void;
+}
