@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { setLocalStorageWithExpiry, getLocalStorageWithExpiry } from '@/utils/localStorage'
 
 export default function usePodcast () {
-  const [loading, setLoading] = useState<boolean>(true)
   const [podcastEntries, setPodcastEntries] = useState<PodcastProps[]| null>(null)
 
   useEffect(() => {
@@ -21,22 +20,18 @@ export default function usePodcast () {
     async function fetchData () {
       try {
         const data: PodcastProps[] = await getPodcastList()
-        setLoading(true)
         setPodcastEntries(data)
 
         const dataParser = JSON.stringify(data)
         setLocalStorageWithExpiry('myPodcasts', dataParser, 1)
       } catch (error) {
         console.log(error)
-      } finally {
-        setLoading(false)
       }
     }
     fetchData()
   }, [])
 
   return {
-    loading,
     podcastEntries
   }
 }
