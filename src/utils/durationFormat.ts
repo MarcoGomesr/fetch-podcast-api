@@ -6,5 +6,6 @@ export function getDurationFormat (duration: string) {
   const minutes = Math.floor(seconds / 60)
   seconds %= 60
 
-  return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+  const formatHours = hours !== 0 ? `${hours}:` : ''
+  return `${formatHours}${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
 }
