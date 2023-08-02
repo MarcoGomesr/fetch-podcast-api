@@ -17,7 +17,8 @@ export default function PodcastDescriptionPage ({ params: { podcastId } }: Param
   const { loading } = useLoadingBounce()
   const { podcastDetail } = usePodcastDetail(podcastId)
 
-  const featurePodcastSummary = podcastDetail && podcastDetail?.filter(detail => detail.type === 'track')
+  const dataArrayValues = podcastDetail && Object.values(podcastDetail)
+  const featurePodcastSummary = dataArrayValues && dataArrayValues.filter(detail => detail.type === 'track')
 
   const isValidURL = (text:string) => {
     const urlPattern = /http:|https:/i
@@ -51,7 +52,7 @@ export default function PodcastDescriptionPage ({ params: { podcastId } }: Param
           </thead>
 
           <tbody>
-            {podcastDetail && podcastDetail?.filter(item => item.type !== 'track').map((detail, index) =>
+            {dataArrayValues && dataArrayValues.filter(item => item.type !== 'track').map((detail, index) =>
               (
                 <tr key={index} className='bg-white border-b hover:bg-gray-100 odd:bg-slate-50 even:bg-white'>
                   <th scope='row' className='px-3 py-4 font-medium text-gray-900 whitespace-nowrap '>
