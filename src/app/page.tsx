@@ -25,7 +25,6 @@ export default function HomePage () {
   if (loading) return null
   return (
     <>
-
       <div className='flex flex-row justify-end items-center'>
         <span className='bg-blue-600 rounded text-white w-8 text-center text-sm mr-2'>
           {filterPodcastSearch?.length}

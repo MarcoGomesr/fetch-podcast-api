@@ -1,6 +1,5 @@
 import getPodcastDetail from '@/services/getPodcastDetail'
 import React from 'react'
-// import { dangerouslyRenderHtml } from 'next/dangerously-render-html'
 
 type Params = {
   params: {
@@ -23,7 +22,11 @@ export default async function episodeIdPage ({ params: { podcastId, episodeId } 
   const { title, description, mediaType, episodeUrl } = episodesValues
 
   const hasHTML = /\n/i.test(description)
-  const newDescription = description.replaceAll('\n', '<br />')
+  let newDescription = ''
+
+  if (hasHTML) {
+    newDescription = description.replaceAll('\n', '<br />')
+  }
 
   const descriptionContent = hasHTML
     ? <div className='italic text-sm text-gray-600' dangerouslySetInnerHTML={{ __html: newDescription }} />

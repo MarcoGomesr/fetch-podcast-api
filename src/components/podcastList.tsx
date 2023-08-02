@@ -6,7 +6,7 @@ import Link from 'next/link'
 interface Props {
   items: PodcastProps
 }
-function podcastList ({ items }: Props) {
+function PodcastList ({ items }: Props) {
   return (
     <Link href={`/podcast/${items.id}`} className='relative'>
       <section className='border border-1 border-gray-300 shadow-md p-5 mb-5 transform transition-all hover:-translate-y-2 hover:shadow-xl'>
@@ -23,4 +23,4 @@ function podcastList ({ items }: Props) {
     </Link>
   )
 }
-export default podcastList
+export default PodcastList

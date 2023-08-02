@@ -1,25 +1,78 @@
-export interface Podcast {
-  feed: Feed;
+export interface Icon {
+  label: string;
 }
-
-export interface Feed {
-  author: Author;
-  entry: Entry[];
-  updated: Icon;
-  rights: Icon;
-  title: Icon;
-  icon: Icon;
-  link: Link[];
-  id: Icon;
-}
-
 export interface Author {
   name: Icon;
   uri: Icon;
 }
 
-export interface Icon {
+export interface CategoryAttributes {
+  'im:id': string;
+  term: PurpleLabel;
+  scheme: string;
+  label: PurpleLabel;
+}
+export interface Category {
+  attributes: CategoryAttributes;
+}
+export interface IDAttributes {
+  'im:id': string;
+}
+
+export interface ID {
   label: string;
+  attributes: IDAttributes;
+}
+
+export interface IMArtistAttributes {
+  href: string;
+}
+export interface IMArtist {
+  label: string;
+  attributes?: IMArtistAttributes;
+}
+
+export interface IMContentTypeAttributes {
+  term: FluffyLabel;
+  label: FluffyLabel;
+}
+
+export interface IMContentType {
+  attributes: IMContentTypeAttributes;
+}
+
+export interface IMImageAttributes {
+  height: string;
+}
+
+export interface IMImage {
+  label: string;
+  attributes: IMImageAttributes;
+}
+
+export interface IMPriceAttributes {
+  amount: string;
+  currency: Currency;
+}
+
+export interface IMPrice {
+  label: IMPriceLabel;
+  attributes: IMPriceAttributes;
+}
+
+export interface IMReleaseDate {
+  label: Date;
+  attributes: Icon;
+}
+
+export interface LinkAttributes {
+  rel: Rel;
+  type?: Type;
+  href: string;
+}
+
+export interface Link {
+  attributes: LinkAttributes;
 }
 
 export interface Entry {
@@ -37,106 +90,6 @@ export interface Entry {
   'im:releaseDate': IMReleaseDate;
 }
 
-export interface Category {
-  attributes: CategoryAttributes;
-}
-
-export interface CategoryAttributes {
-  'im:id': string;
-  term: PurpleLabel;
-  scheme: string;
-  label: PurpleLabel;
-}
-
-export enum PurpleLabel {
-  Music = 'Music',
-  MusicCommentary = 'Music Commentary',
-  MusicHistory = 'Music History',
-  MusicInterviews = 'Music Interviews',
-}
-
-export interface ID {
-  label: string;
-  attributes: IDAttributes;
-}
-
-export interface IDAttributes {
-  'im:id': string;
-}
-
-export interface IMArtist {
-  label: string;
-  attributes?: IMArtistAttributes;
-}
-
-export interface IMArtistAttributes {
-  href: string;
-}
-
-export interface IMContentType {
-  attributes: IMContentTypeAttributes;
-}
-
-export interface IMContentTypeAttributes {
-  term: FluffyLabel;
-  label: FluffyLabel;
-}
-
-export enum FluffyLabel {
-  Podcast = 'Podcast',
-}
-
-export interface IMImage {
-  label: string;
-  attributes: IMImageAttributes;
-}
-
-export interface IMImageAttributes {
-  height: string;
-}
-
-export interface IMPrice {
-  label: IMPriceLabel;
-  attributes: IMPriceAttributes;
-}
-
-export interface IMPriceAttributes {
-  amount: string;
-  currency: Currency;
-}
-
-export enum Currency {
-  Usd = 'USD',
-}
-
-export enum IMPriceLabel {
-  Get = 'Get',
-}
-
-export interface IMReleaseDate {
-  label: Date;
-  attributes: Icon;
-}
-
-export interface Link {
-  attributes: LinkAttributes;
-}
-
-export interface LinkAttributes {
-  rel: Rel;
-  type?: Type;
-  href: string;
-}
-
-export enum Rel {
-  Alternate = 'alternate',
-  Self = 'self',
-}
-
-export enum Type {
-  TextHTML = 'text/html',
-}
-
 export interface PodcastProps {
   id: string;
   title: string;
@@ -144,11 +97,25 @@ export interface PodcastProps {
   image: string;
 }
 
-export interface PodcastDetail {
-  resultCount: number;
-  results: Result[];
+export interface GenreClass {
+  id: string;
+  name: PrimaryGenreNameEnum;
  }
 
+export interface Feed {
+  author: Author;
+  entry: Entry[];
+  updated: Icon;
+  rights: Icon;
+  title: Icon;
+  icon: Icon;
+  link: Link[];
+  id: Icon;
+}
+
+export interface Podcast {
+  feed: Feed;
+}
 export interface Result {
   artistId?: number;
   artistIds?: number[];
@@ -192,63 +159,25 @@ export interface Result {
   trackTimeMillis?: number;
   trackViewUrl: string;
   wrapperType: WrapperType;
- }
-
-export enum ClosedCaptioning {
-  None = 'none',
- }
-
-export enum Name {
-  MillionDollazWorthOfGame = 'Million Dollaz Worth Of Game',
- }
-
-export enum ContentAdvisoryRating {
-  Explicit = 'Explicit',
- }
-
-export enum Country {
-  Usa = 'USA',
- }
-
-export enum EpisodeContentType {
-  Audio = 'audio',
- }
-
-export enum EpisodeFileExtension {
-  Mp3 = 'mp3',
- }
-
-export interface GenreClass {
-  id: string;
-  name: PrimaryGenreNameEnum;
- }
-
-export enum PrimaryGenreNameEnum {
-  MusicCommentary = 'Music Commentary',
- }
-
-export enum Kind {
-  Podcast = 'podcast',
-  PodcastEpisode = 'podcast-episode',
- }
-
-export enum WrapperType {
-  PodcastEpisode = 'podcastEpisode',
-  Track = 'track',
- }
+}
+export interface PodcastDetail {
+  resultCount: number;
+  results: Result[];
+}
 
 export interface PodcastDetailPros {
-  type: WrapperType,
-  author: string,
-  description: string,
-  episodes: number,
-  image: string,
-  id: string,
-  release: string,
-  title: string,
-  duration: number
-  mediaType: string,
-  episodeUrl: string
+
+  type: string;
+  author?: string;
+  episodes?: number;
+  image: string;
+  release: Date;
+  title: string;
+  duration?: number;
+  description?: string;
+  id?: string;
+  mediaType?: string;
+  episodeUrl?: string;
  }
 
 export interface LoadingContextProps {

@@ -1,4 +1,4 @@
-<details>
+<details open>
 <summary>How to install the application</summary>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
@@ -39,20 +39,25 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 </details>
 
 <details>
-<summary>## Task</summary>
+<summary>Tasks</summary>
 
 
 
 
 ### Podcast Homapage
 [x] Mostrar el listado de los 100 podcasts más populares según el listado de Apple
+
 [x] Una vez obtenido el listado desde el servicio externo por primera vez se deberá almacenar en cliente de manera que solo se vuelva a solicitar si ha pasado más de un día desde la última vez que se solicitó.
+
 [x] El usuario podrá filtrar los podcasts mostrados introduciendo una cadena de texto que tendrá en cuenta tanto el título de los podcasts así como los nombres de sus autores.
+
 [x] El filtrado deberá ser inmediato de manera que reaccione a medida que el usuario vaya introduciendo su texto de filtrado.
+
 [x] Al pulsar sobre un podcast el usuario deberá navegar a la vista con el detalle del mismo.
 
 ### Podcast details page
 [x] Se debe mostrar una barra lateral con la imagen del podcast, su título, su autor y su descripción.
+
 [x] Se debe mostrar una sección principal donde se visualizará el número de episodios
 
 [x] que actualmente tiene el podcast así como un listado de los mismos indicando su título, fecha de publicación y duración.
@@ -75,3 +80,10 @@ aplicación.
 [x] Cada vez que se inicie una navegación en cliente se debe mostrar algún tipo de indicador visual en la esquina superior derecha de la página para reflejar que el proceso está en marcha. Dicho indicador deberá desaparecer tras finalizar la transición a la nueva vista.
 
 </details>
+
+<details>
+<summary>Final Notes</summary>
+* nextjs tailwind vitest
+* I use app/ as the main template the rest of the files are outside app/ example components folder
+
+<details>
