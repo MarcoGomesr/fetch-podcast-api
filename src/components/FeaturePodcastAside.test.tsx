@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
-import PodcastList from './PodcastList'
+import PodcastList from '@/components/PodcastList'
 
 const mockData = { id: '1', title: 'Test Podcast', author: 'Test Author', image: '/test-image.jpg' }
 beforeAll(() => {
