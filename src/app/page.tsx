@@ -1,9 +1,9 @@
 'use client'
 
-import PodcastList from '@/components/PodcastList'
 import usePodcast from '@/hooks/usePodcast'
 import { ChangeEvent, useMemo, useState } from 'react'
 import useLoadingBounce from '@/hooks/useLoadingBounce'
+import PodcastList from '@/components/PodcastList'
 export default function HomePage () {
   const { loading } = useLoadingBounce()
   const { podcastEntries } = usePodcast()
