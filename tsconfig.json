@@ -23,7 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "types": ["vitest/globals"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/podcast/[podcastId]/episode/[epidoseId]"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/podcast/[podcastId]/episode/[epidoseId]", "src/__test__/services/getPodcastDetail.test.ts"],
   "exclude": ["node_modules"]
 }
