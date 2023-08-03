@@ -1,7 +1,6 @@
 'use client'
 
 import usePodcastDetail from '@/hooks/usePodcastDetail'
-
 import { getDateFormatter } from '@/utils/dateFormat'
 import { getDurationFormat } from '@/utils/durationFormat'
 import Link from 'next/link'
